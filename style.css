@@ -1,0 +1,374 @@
+/* ===== GLOBAL ===== */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 60px;
+    animation: fadeInPage 1s ease-in-out;
+}
+
+@keyframes fadeInPage {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Animated background glow */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,65,108,0.15), transparent 40%),
+                radial-gradient(circle, rgba(79,172,254,0.15), transparent 40%);
+    animation: moveGlow 12s linear infinite;
+    z-index: -1;
+}
+
+@keyframes moveGlow {
+    0% { transform: translate(0,0); }
+    50% { transform: translate(-10%, -10%); }
+    100% { transform: translate(0,0); }
+}
+
+/* ===== LOGIN CONTAINER ===== */
+#loginContainer {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(15px);
+    width: 350px;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0,255,255,0.3);
+    text-align: center;
+    transition: 0.3s;
+}
+
+#loginContainer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 50px rgba(0,255,255,0.5);
+}
+
+/* ===== BOOKING CONTAINER ===== */
+#bookingContainer {
+    display: none;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+/* ===== SEARCH BAR ===== */
+#searchContainer {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+#searchInput {
+    width: 50%;
+    padding: 12px 20px;
+    border-radius: 30px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    outline: none;
+}
+
+/* ===== EVENT CARDS ===== */
+.event-card {
+    display: inline-block;
+    width: 220px;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(12px);
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+    transition: 0.4s;
+}
+
+.event-card:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 0 30px rgba(79,172,254,0.7),
+                0 0 60px rgba(255,65,108,0.5);
+}
+
+.event-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.event-card button {
+    padding: 8px 12px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.event-card button:hover {
+    transform: scale(1.05);
+}
+
+/* ===== MODAL ===== */
+#bookingModal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(6px);
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+#bookingForm {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(15px);
+    padding: 30px;
+    border-radius: 20px;
+    width: 320px;
+    text-align: center;
+    animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-30px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* ===================================================== */
+/* 🎟 REAL EVENT TICKET DESIGN */
+/* ===================================================== */
+
+.ticket-card {
+    width: 750px;
+    max-width: 95%;
+    margin: 40px auto;
+    background: linear-gradient(135deg, #141e30, #243b55);
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px;
+    position: relative;
+    color: white;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+    animation: ticketPop 0.6s ease;
+    overflow: hidden;
+}
+
+/* Side circular cuts */
+.ticket-card::before,
+.ticket-card::after {
+    content: "";
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    background: #0f2027;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+}
+
+.ticket-card::before {
+    left: -22px;
+}
+
+.ticket-card::after {
+    right: -22px;
+}
+
+/* Center dotted tear line */
+.ticket-card .divider {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    border-left: 2px dashed rgba(255,255,255,0.4);
+}
+
+/* Left Section */
+.ticket-left {
+    width: 55%;
+}
+
+.ticket-left h2 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    color: #00ffff;
+    text-shadow: 0 0 10px #00ffff;
+}
+
+.ticket-left p {
+    margin: 6px 0;
+    font-size: 15px;
+}
+
+/* Right Section */
+.ticket-right {
+    width: 40%;
+    text-align: right;
+}
+
+.ticket-right h3 {
+    font-size: 32px;
+    margin: 10px 0;
+    color: #00ffcc;
+}
+
+.ticket-right .booking-id {
+    font-size: 14px;
+    color: #ffd700;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+}
+
+.ticket-right .barcode {
+    margin-top: 20px;
+    height: 55px;
+    background: repeating-linear-gradient(
+        90deg,
+        white,
+        white 2px,
+        black 2px,
+        black 4px
+    );
+    border-radius: 4px;
+}
+
+/* Ticket animation */
+@keyframes ticketPop {
+    from { transform: scale(0.7); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(#ff416c, #4facfe);
+    border-radius: 10px;
+}
+/* ===== PREMIUM TICKET DESIGN ===== */
+
+.ticket-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+.ticket-card {
+    display: flex;
+    width: 700px;
+    background: linear-gradient(135deg, #141E30, #243B55);
+    color: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    position: relative;
+}
+
+/* Left Section */
+.ticket-left {
+    flex: 2;
+    padding: 30px;
+}
+
+.ticket-left h2 {
+    margin-bottom: 15px;
+    font-size: 24px;
+    letter-spacing: 1px;
+}
+
+.ticket-left p {
+    margin: 6px 0;
+    font-size: 15px;
+}
+
+/* Divider */
+.divider {
+    width: 2px;
+    background: repeating-linear-gradient(
+        to bottom,
+        white,
+        white 6px,
+        transparent 6px,
+        transparent 12px
+    );
+}
+
+/* Right Section */
+.ticket-right {
+    flex: 1;
+    padding: 30px;
+    text-align: center;
+    background: rgba(255,255,255,0.05);
+}
+
+.booking-id {
+    font-size: 13px;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+.ticket-right h3 {
+    font-size: 28px;
+    margin: 10px 0;
+    color: #00ffcc;
+}
+
+/* Fake Barcode */
+.barcode {
+    height: 40px;
+    margin: 15px 0;
+    background: repeating-linear-gradient(
+        90deg,
+        white,
+        white 3px,
+        black 3px,
+        black 6px
+    );
+}
+
+.thank-you {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* Side Ticket Cut Effect */
+.ticket-card::before,
+.ticket-card::after {
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: #111;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.ticket-card::before {
+    left: -12px;
+}
+
+.ticket-card::after {
+    right: -12px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
